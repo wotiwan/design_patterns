@@ -1,0 +1,17 @@
+{
+  "company":
+  {
+    "name": "Рога и копыта",
+    "inn": "380113335012",
+    "bik": "123456789",
+    "account": "12345678901",
+    "correspondent_account": "12345678901",
+    "ownership_type": "OOOAO"
+  },
+  "scenario1": {
+    "request": {
+
+    },
+    "inn": "38011333500"
+  }
+}
