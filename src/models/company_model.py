@@ -1,10 +1,10 @@
 
 class company_model:
     __name:str = ""                   # Наименование компании
-    __inn:str = ""                    # ИНН
-    __account:str = ""                # Счёт
-    __correspondent_account:str = ""  # Корреспондентский счёт
-    __bik:str = ""                    # БИК
+    __inn:int = ""                    # ИНН
+    __account:int= ""                # Счёт
+    __correspondent_account:int = ""  # Корреспондентский счёт
+    __bik:int = ""                    # БИК
     __ownership_type:str = ""         # Форма собственности
 
 
@@ -21,13 +21,13 @@ class company_model:
 
     # inn setter ang getter
     @property
-    def inn(self) -> str:
+    def inn(self) -> int:
         return self.__inn
 
     @inn.setter
-    def inn(self, value:str):
-        if value.strip() != "":
-            self.__inn = value.strip()
+    def inn(self, value:int):
+        if value is not None:
+            self.__inn = value
 
 
     # account setter and getter
@@ -36,9 +36,9 @@ class company_model:
         return self.__account
 
     @account.setter
-    def account(self, value:str):
-        if value.strip() != "":
-            self.__account = value.strip()
+    def account(self, value:int):
+        if value is not None:
+            self.__account = value
 
 
     # correspondent_account setter and getter
@@ -47,9 +47,9 @@ class company_model:
         return self.__correspondent_account
 
     @correspondent_account.setter
-    def correspondent_account(self, value: str):
-        if value.strip() != "":
-            self.__correspondent_account = value.strip()
+    def correspondent_account(self, value: int):
+        if value is not None:
+            self.__correspondent_account = value
 
 
     # bik setter and getter
@@ -58,9 +58,9 @@ class company_model:
         return self.__bik
 
     @bik.setter
-    def bik(self, value:str):
-        if value.strip() != "":
-            self.__bik = value.strip()
+    def bik(self, value:int):
+        if value is not None:
+            self.__bik = value
 
 
     # ownership_type setter and getter

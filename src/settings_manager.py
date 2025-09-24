@@ -1,5 +1,5 @@
 import os.path
-from rOMASHKA.src.settings import settings
+from src.settings import settings
 import json
 
 class settings_manager:
@@ -31,7 +31,7 @@ class settings_manager:
         if value.strip() == "":
             return
         if os.path.exists(value):
-            self.__file_name = value.strip()
+            self.__file_name = os.path.abspath(value.strip())
 
     def load(self) -> bool:
         if self.__file_name.strip() == "":
@@ -72,8 +72,3 @@ class settings_manager:
         self.__settings.set_ownership_type("#####")
         self.__settings.set_account("###########")
         self.__settings.set_correspondent_account("###########")
-
-
-if __name__ == "__main__":
-    manager = settings_manager("D:/учёба/Volovikov/Patterns2025/rOMASHKA/settings.json")
-    manager.load()

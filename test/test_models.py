@@ -1,5 +1,5 @@
-from rOMASHKA.src.models.company_model import company_model
-from rOMASHKA.src.settings_manager import settings_manager
+from src.models.company_model import company_model
+from src.settings_manager import settings_manager
 import json
 import unittest
 
@@ -53,10 +53,10 @@ class TestModels(unittest.TestCase):
         manager.load()
 
         # Тесты
-        self.assertEqual(manager.settings.company.inn, "380113335012")
-        self.assertEqual(manager.settings.company.account, "12345678901")
-        self.assertEqual(manager.settings.company.correspondent_account, "12345678901")
-        self.assertEqual(manager.settings.company.bik, "123456789")
+        self.assertEqual(manager.settings.company.inn, 380113335012)
+        self.assertEqual(manager.settings.company.account, 12345678901)
+        self.assertEqual(manager.settings.company.correspondent_account, 12345678901)
+        self.assertEqual(manager.settings.company.bik, 123456789)
         self.assertEqual(manager.settings.company.ownership_type, "OOOAO")
 
     def test_different_config_locations(self):
@@ -77,6 +77,24 @@ class TestModels(unittest.TestCase):
 
         # Проверка №2. Убеждаемся что с другого файла были загружены настройки
         self.assertEqual(manager.settings.company.name, "Теремок")
+
+    # Проверка негативного сценария обновления атрибутов организации
+    def test_wrong_config_data(self):
+        file_name = "../settings.json"
+        manager = settings_manager(file_name)
+
+        # Действие
+        manager.load()
+
+        # Проверка. Неверно указан инн
+        self.assertRaises(ValueError, manager.settings.set_inn, 123)
+        # Неверно указан счёт
+        self.assertRaises(ValueError, manager.settings.set_account, 123)
+        # Неверно указан корреспондентский счёт
+        self.assertRaises(ValueError, manager.settings.set_correspondent_account, 123)
+        # Неверно указан БИК
+        self.assertRaises(ValueError, manager.settings.set_bik, 123)
+
 
 if __name__ == "__main__":
     unittest.main()
