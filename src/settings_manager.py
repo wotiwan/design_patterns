@@ -48,6 +48,7 @@ class settings_manager:
     # Применение загруженных настроек
     def convert(self, data):
         try:
+            # TODO: Сделать словарь ключей
             if "company" in data.keys():
                 item = data["company"]
                 self.__settings.company.name = item["name"]
@@ -67,8 +68,8 @@ class settings_manager:
     def default(self):
         self.__settings = settings()
         self.__settings.company.name = "Рога и копыта"
-        self.__settings.set_inn("############")
-        self.__settings.set_bik("#########")
+        self.__settings.set_inn(123456789012)
+        self.__settings.set_bik(123456789)
         self.__settings.set_ownership_type("#####")
-        self.__settings.set_account("###########")
-        self.__settings.set_correspondent_account("###########")
+        self.__settings.set_account(12345678901)
+        self.__settings.set_correspondent_account(12345678901)

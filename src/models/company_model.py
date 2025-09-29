@@ -7,6 +7,7 @@ class company_model:
     __bik:int = ""                    # БИК
     __ownership_type:str = ""         # Форма собственности
 
+    # TODO: Сделать сеттеры одной строкой (одна функция сеттера с разынми аргументами наверное)
 
     # name setter and getter
     @property
