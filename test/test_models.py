@@ -118,8 +118,8 @@ class TestModels(unittest.TestCase):
 
     def test_range_model_create(self):
         # Подготовка
-        gramms = range_model("Гр.", 1)
-        kilos = range_model("Кг.", 1000, gramms)
+        gramms = range_model.create("Гр.", 1)
+        kilos = range_model.create("Кг.", 1000, gramms)
 
         # Действие
 
@@ -133,7 +133,7 @@ class TestModels(unittest.TestCase):
 
     def test_correct_data_range_model(self):
         # Подготовка
-        gramms = range_model("Гр.", 1)
+        gramms = range_model.create("Гр.", 1)
 
         # Действие
         gramms.base_range = gramms
@@ -145,16 +145,16 @@ class TestModels(unittest.TestCase):
 
     def test_wrong_data_range_model(self):
         # Подготовка
-        gramms = range_model("Гр.", 1)
+        gramms = range_model.create("Гр.", 1)
 
         # Действие
 
         # Проверка
         with self.assertRaises(argument_exception):
-            gramms.base_range = "some string" # Неверный тип данных
+            gramms.base_range = "some string"  # Неверный тип данных
 
         with self.assertRaises(argument_exception):
-            gramms.conversation_ratio = "some string" # Неверный тип данных
+            gramms.conversation_ratio = "some string"  # Неверный тип данных
 
     def test_nomenclature_model_create(self):
         # Подготовка
@@ -172,9 +172,13 @@ class TestModels(unittest.TestCase):
 
         # Действие
         with self.assertRaises(argument_exception):
-            nomenclature.full_name = "1" * 256 # Длина выше допустимой
+            nomenclature.full_name = "1" * 256  # Длина выше допустимой
         with self.assertRaises(argument_exception):
-            nomenclature.full_name = 1 # Неправильный тип
+            nomenclature.full_name = 1  # Неправильный тип
+
+
+    
+
 
 if __name__ == "__main__":
     unittest.main()
