@@ -52,6 +52,28 @@ class range_model(abstract_model):
         return item
 
     @staticmethod
+    def create_piece():
+        """Создаёт единицу измерения 'Штука'"""
+        item = range_model()
+        item = item.create("штука", 1)
+        return item
+
+    @staticmethod
+    def create_milliliter():
+        """Создаёт единицу измерения 'Мл.'"""
+        item = range_model()
+        item = item.create("Мл.", 1)
+        return item
+
+    @staticmethod
+    def create_liter():
+        """Создаёт единицу измерения 'Литр'"""
+        item = range_model()
+        base = range_model.create_milliliter()
+        item = item.create("Л.", 1000, base)
+        return item
+
+    @staticmethod
     def create(name: str, conversion_ratio: int, base_range=None):
         item = range_model()
         item.name = name
